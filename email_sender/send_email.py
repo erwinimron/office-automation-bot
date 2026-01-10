@@ -1,26 +1,19 @@
+import os
 import smtplib
-from email.message import EmailMessage
+from email.mime.text import MIMEText
+
+EMAIL_SENDER = os.getenv("EMAIL_SENDER")
+EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
 
 def send_email():
-    msg = EmailMessage()
-    msg["Subject"] = "Daily Sales Report"
-    msg["From"] = "your_email@gmail.com"
-    msg["To"] = "receiver@email.com"
-    msg.set_content("Attached is today's sales summary.")
+    msg = MIMEText("Hello, this email is sent from Office Automation Bot 🚀")
+    msg["Subject"] = "Automation Test Email"
+    msg["From"] = EMAIL_SENDER
+    msg["To"] = EMAIL_SENDER
 
-    with open("output/summary.xlsx", "rb") as f:
-        msg.add_attachment(
-            f.read(),
-            maintype="application",
-            subtype="vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-            filename="summary.xlsx"
-        )
-
-    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
-        smtp.login("your_email@gmail.com", "APP_PASSWORD")
-        smtp.send_message(msg)
-
-    print("📧 Email sent")
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+        server.login(EMAIL_SENDER, EMAIL_PASSWORD)
+        server.send_message(msg)
 
 if __name__ == "__main__":
     send_email()
