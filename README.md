@@ -1,23 +1,26 @@
-# Office Automation Bot
+Office Automation Bot
 
-Python-based automation tools to help admin and small businesses
-reduce manual work.
+Automate repetitive office tasks using Python + GitHub Actions.
+No server required.
 
-## Features
-- Excel sales recap automation
-- Automatic email report delivery
-- Website report downloader
+Features:
+- Automated email notifications
+- Excel recap automation
+- Secure environment variables
+- One-click or scheduled execution
 
-## Tech Stack
+Use cases:
+- UMKM daily report
+- Invoice sender
+- Purchase order notification
+- Admin reminder system
+
+Setup:
+1. Fork repo
+2. Add EMAIL_SENDER & EMAIL_PASSWORD to GitHub Secrets
+3. Run workflow
+
+Tech:
 - Python
-- Pandas
-- SMTP Email
-
-## Use Case
-- Daily sales report
-- Finance recap
-- Admin reporting
-
-## Note
-This repository is for demonstration purposes.
-Client-specific configuration is handled separately.
+- GitHub Actions
+- SMTP (Gmail)
